@@ -10,8 +10,8 @@ public class Car {
     void start(){
         this.engine.setOn();
         this.engine.setEngineSpeed(0);
-        this.engine.onSpeedChange(0);
         System.out.println("The engine has started");
+        this.engine.onSpeedChange(0);
     }
     void stop(){
         if (this.carSpeed == 0) {

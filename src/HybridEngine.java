@@ -1,10 +1,10 @@
 enum EngineType {
-    Electric , Gas
+    Electric , Gas , None
 }
 public class HybridEngine extends Engine {
     GasEngine gasEngine;
     ElectricEngine electricEngine;
-    EngineType workingEngine = EngineType.Electric;
+    EngineType workingEngine = EngineType.None;
 
     public HybridEngine() {
         super();
@@ -22,7 +22,7 @@ public class HybridEngine extends Engine {
     void increase() {
         if (workingEngine == EngineType.Electric) {
             electricEngine.increase();
-        } else {
+        } else if (workingEngine == EngineType.Gas) {
             gasEngine.increase();
         }
     }
@@ -31,17 +31,18 @@ public class HybridEngine extends Engine {
     void decrease() {
         if (workingEngine == EngineType.Electric) {
             electricEngine.decrease();
-        } else {
+        } else if (workingEngine == EngineType.Gas){
             gasEngine.decrease();
         }
     }
 
     @Override
     void onSpeedChange(int carSpeed){
-        System.out.println("The current speed is " + carSpeed);
+        System.out.println("The current car speed is " + carSpeed);
         if (carSpeed < 50 && workingEngine == EngineType.Gas) {
             // 1. turn on electricEngine
             electricEngine.setOn();
+            workingEngine = EngineType.Electric;
             // 2. increase electricEngine speed to be equal to gasEngine speed
             while (electricEngine.getEngineSpeed() < gasEngine.getEngineSpeed()) {
                 electricEngine.increase();
@@ -56,6 +57,7 @@ public class HybridEngine extends Engine {
         } else if (carSpeed >= 50 && workingEngine == EngineType.Electric){
             // 1. turn on gasEngine
             gasEngine.setOn();
+            workingEngine = EngineType.Gas;
             // 2. increase gasEngine speed to be equal to electricEngine speed
             while (gasEngine.getEngineSpeed() < electricEngine.getEngineSpeed()) {
                 gasEngine.increase();
@@ -67,6 +69,10 @@ public class HybridEngine extends Engine {
             // 4. turn off electricEngine
             electricEngine.setOff();
             System.out.println("Switched to gas engine!");
+        } else if (workingEngine == EngineType.None) {
+            // turn on electricEngine
+            electricEngine.setOn();
+            workingEngine = EngineType.Electric;
         }
     };
 }

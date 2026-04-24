@@ -11,6 +11,9 @@ public class Main {
         car.accelerate(); // 20
         car.accelerate(); // 40
         car.accelerate(); // 60 and switch
+        // here gas will be increased from 0 till 3
+        // and electric will be decrease from 3 to zero
+
 
         car.brake(); // 40 and switch
         car.brake();
