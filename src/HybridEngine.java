@@ -19,6 +19,24 @@ public class HybridEngine extends Engine {
     }
 
     @Override
+    void increase() {
+        if (workingEngine == EngineType.Electric) {
+            electricEngine.increase();
+        } else {
+            gasEngine.increase();
+        }
+    }
+
+    @Override
+    void decrease() {
+        if (workingEngine == EngineType.Electric) {
+            electricEngine.decrease();
+        } else {
+            gasEngine.decrease();
+        }
+    }
+
+    @Override
     void onSpeedChange(int carSpeed){
         System.out.println("The current speed is " + carSpeed);
         if (carSpeed < 50 && workingEngine == EngineType.Gas) {
