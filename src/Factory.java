@@ -15,5 +15,9 @@ public class Factory {
     void replaceEngine(Car car , Engine engine){
         car.setEngine(engine);
     }
+
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
 }
 
