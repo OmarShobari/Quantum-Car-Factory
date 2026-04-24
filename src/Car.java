@@ -8,16 +8,16 @@ public class Car {
     }
 
     void start(){
-        this.engine.isOn = true;
-        this.engine.engineSpeed = 0;
+        this.engine.setOn();
+        this.engine.setEngineSpeed(0);
         System.out.print("The engine has started");
     }
     void stop(){
         if (this.carSpeed == 0) {
-            while (this.engine.engineSpeed > 0){
+            while (this.engine.getEngineSpeed() > 0){
                 this.engine.decrease();
             }
-            this.engine.isOn = false;
+            this.engine.setOff();
             System.out.print("The engine has stopped");
         } else {
             System.out.print("The car should be parked first");

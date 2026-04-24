@@ -6,5 +6,14 @@ public class Factory {
     public Factory() {
         cars = new ArrayList<>();
     }
+
+    void createCar(Engine engine){
+        Car newCar = new Car(engine);
+        cars.add(newCar);
+    }
+
+    void replaceEngine(Car car , Engine engine){
+        car.setEngine(engine);
+    }
 }
 
