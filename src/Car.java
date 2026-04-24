@@ -10,6 +10,7 @@ public class Car {
     void start(){
         this.engine.setOn();
         this.engine.setEngineSpeed(0);
+        this.engine.onSpeedChange(0);
         System.out.println("The engine has started");
     }
     void stop(){
@@ -43,16 +44,12 @@ public class Car {
             this.engine.decrease();
             this.carSpeed -= 20;
             System.out.println("The car's speed has decreased by 20 km/h");
-            System.out.println("The current speed is " + this.carSpeed);
             engine.onSpeedChange(this.carSpeed);
         } else {
             System.out.println("The car is already parked");
         }
     }
 
-    public Engine getEngine() {
-        return engine;
-    }
 
     public void setEngine(Engine engine) {
         this.engine = engine;
