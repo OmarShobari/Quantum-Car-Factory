@@ -10,7 +10,7 @@ public class Car {
     void start(){
         this.engine.setOn();
         this.engine.setEngineSpeed(0);
-        System.out.print("The engine has started");
+        System.out.println("The engine has started");
     }
     void stop(){
         if (this.carSpeed == 0) {
@@ -18,31 +18,35 @@ public class Car {
                 this.engine.decrease();
             }
             this.engine.setOff();
-            System.out.print("The engine has stopped");
+            System.out.println("The engine has stopped");
         } else {
-            System.out.print("The car should be parked first");
+            System.out.println("The car should be parked first");
         }
     }
 
     void accelerate(){
-        if (this.carSpeed < 200){
-            this.engine.increase();
-            this.carSpeed += 20;
-            System.out.print("The car's speed has increased by 20 km/h");
-            engine.onSpeedChange(this.carSpeed);
+        if (this.engine.isOn()){
+            if (this.carSpeed < 200){
+                this.engine.increase();
+                this.carSpeed += 20;
+                System.out.println("The car's speed has increased by 20 km/h");
+                engine.onSpeedChange(this.carSpeed);
+            } else {
+                System.out.println("The car is already at the maximum speed");
+            }
         } else {
-            System.out.print("The car is already at the maximum speed");
+            System.out.println("Start the engine first");
         }
     }
     void brake(){
         if (this.carSpeed > 0){
             this.engine.decrease();
             this.carSpeed -= 20;
-            System.out.print("The car's speed has decreased by 20 km/h");
-            System.out.print("The current speed is " + this.carSpeed);
+            System.out.println("The car's speed has decreased by 20 km/h");
+            System.out.println("The current speed is " + this.carSpeed);
             engine.onSpeedChange(this.carSpeed);
         } else {
-            System.out.print("The car is already parked");
+            System.out.println("The car is already parked");
         }
     }
 

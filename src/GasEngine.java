@@ -4,6 +4,6 @@ public class GasEngine extends Engine {
     }
     @Override
     void onSpeedChange(int carSpeed){
-        System.out.print("The current speed is " + carSpeed);
+        System.out.println("The current speed is " + carSpeed);
     };
 }

@@ -9,14 +9,14 @@ public abstract class Engine {
 
     void increase(){
         this.engineSpeed++;
-        System.out.print("The engine's speed has increased by 1 km/h");
+        System.out.println("The engine's speed has increased by 1 km/h");
     };
     void decrease(){
         this.engineSpeed--;
-        System.out.print("The engine's speed has decreased by 1 km/h");
+        System.out.println("The engine's speed has decreased by 1 km/h");
     };
 
-    void onSpeedChange(int carSpeed){};
+    abstract void onSpeedChange(int carSpeed);
 
     public boolean isOn() {
         return isOn;

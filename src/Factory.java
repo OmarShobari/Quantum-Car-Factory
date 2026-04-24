@@ -7,9 +7,10 @@ public class Factory {
         cars = new ArrayList<>();
     }
 
-    void createCar(Engine engine){
+    Car createCar(Engine engine){
         Car newCar = new Car(engine);
         cars.add(newCar);
+        return newCar;
     }
 
     void replaceEngine(Car car , Engine engine){
